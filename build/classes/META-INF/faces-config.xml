@@ -1,0 +1,7 @@
+
+<faces-config xmlns="http://java.sun.com/JSF/Configuration">
+    <component>
+        <component-type>com.mmm.woodicebridge.MyColumn</component-type>
+        <component-class>com.mmm.woodicebridge.MyColumn</component-class>
+    </component>
+</faces-config>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:webuijsf="http://java.sun.com/jsf/composite/webuijsfcomp">
+    <h:head>
+
+        <title>This will not be present in rendered output</title>
+
+    </h:head>
+
+    <h:body>
+
+        <composite:interface>
+
+            <composite:attribute name="style" required="false"/>
+            <composite:attribute name="styleClass" required="false"/>
+            <composite:attribute name="headerClass" required="false"/>
+            <composite:attribute name="bodyClass" required="false"/>
+            <composite:attribute name="id" required="false"/>
+            <composite:attribute name="title" required="false"/>
+            <composite:attribute name="paginationControls" required="false"/>
+            <composite:attribute name="selectMultipleButton" required="false"/>
+            <composite:attribute name="sortPanelToggleButton" required="false"/>
+            <composite:attribute name="width" required="false"/>
+            <composite:attribute name="header" required="false"/>
+            <composite:attribute name="clearSortButton" required="false"/>
+            <composite:attribute name="clearSortButton" required="false"/>
+            <composite:attribute name="paginateButton" required="false"/>
+            <composite:attribute name="augmentTitle" required="false"/>
+
+        </composite:interface>
+        <composite:implementation>
+            <composite:insertChildren />
+        </composite:implementation>
+
+    </h:body>
+
+</html>
