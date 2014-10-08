@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:webuijsf="http://java.sun.com/jsf/composite/webuijsfcomp"
+      xmlns:cu="http://javaserverfaces.dev.java.net/demo/custom-taglib">
+    <h:head>
+        <title>This will not be present in rendered output</title>
+    </h:head>
+    <h:body>
+    <composite:interface componentType="com.mmm.woodicebridge.MyColumn">
+        <composite:attribute name="id" required="false"/>
+        <composite:attribute name="alignKey" required="false"/>
+        <composite:attribute name="headerText" required="false"/>
+        <composite:attribute name="rowHeader" required="false"/>
+        <composite:attribute name="sort" required="false"/>
+        <composite:attribute name="headerText" required="false"/>
+        <composite:attribute name="visible" required="false"/>
+        <composite:attribute name="rendered2" required="false"/>
+    </composite:interface>
+    <composite:implementation>
+        <c:if test="${not empty cc.attrs.rendered2}">
+            <c:set var="rendered" value="#{cc.attrs.rendered2}" />
+        </c:if>
+        <c:if test="${empty cc.attrs.rendered2}">
+            <c:set var="rendered" value="true" />
+        </c:if>
+        <c:if test="${not empty cc.attrs.visible}">
+            <c:set var="visible" value="#{cc.attrs.visible}" />
+        </c:if>
+        <c:if test="${empty cc.attrs.visible}">
+            <c:set var="visible" value="true" />
+        </c:if>
+        <c:if test="${not empty cc.attrs.sort}">
+            <c:set var="sort" value="#{cc.attrs.sort}" />
+        </c:if>
+        <c:if test="${empty cc.attrs.sort}">
+            <c:set var="sort" value="false" />
+        </c:if>
+        <c:if test="${not empty cc.attrs.headerText}">
+            <c:set var="headerText" value="#{cc.attrs.headerText}" />
+        </c:if>
+        <c:if test="${not empty cc.attrs.id}">
+            <c:set var="id" value="#{cc.attrs.id}" />
+        </c:if>
+        <c:if test="${not empty id}">
+            <cu:custom rendered="#{rendered}" headerText="#{headerText}" id="#{id}">
+                <c:if test="${sort}">
+                    <f:facet name="header">
+                        <ice:commandSortHeader
+                            columnName="#{headerText}"
+                            arrow="true" >
+                        <ice:outputText value="#{headerText}"/>
+                        </ice:commandSortHeader>
+                    </f:facet>
+                </c:if>
+                <c:if test="${not sort}">
+                    <f:facet name="header">
+                        <ice:outputText value="#{headerText}"/>
+                    </f:facet>
+                </c:if>
+                <composite:insertChildren />
+            </cu:custom>
+        </c:if>
+        <c:if test="${empty id}">
+            <cu:custom rendered="#{rendered}" headerText="#{headerText}">
+                <c:if test="${sort}">
+                    <f:facet name="header">
+                        <ice:commandSortHeader
+                            columnName="#{headerText}"
+                            arrow="true" >
+                        <ice:outputText value="#{headerText}"/>
+                        </ice:commandSortHeader>
+                    </f:facet>
+                </c:if>
+                <c:if test="${not sort}">
+                    <f:facet name="header">
+                        <ice:outputText value="#{headerText}"/>
+                    </f:facet>
+                </c:if>
+                <composite:insertChildren />
+            </cu:custom>
+        </c:if>
+    </composite:implementation>
+    </h:body>
+</html>
